@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+  font-family: sans-serif;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 400vw;
+  height: 100vh;
+  transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem;
+  text-align: center;
+}
+
+.statement {
+  background: #F7E49B;
+}
+
+.photo {
+  background: #F7E49B;
+}
+
+.message {
+  background: #F7E49B;
+}
+
+.wishlist {
+  background: #F7E49B;
+}
+
+.birthday-image {
+  max-width: 80%;
+  max-height: 70vh;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wishlist-form input,
+.wishlist-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+}
+
+.wishlist-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 1rem;
+}
+
+.controls button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.birthday-number {
+  display: inline-block;
+  animation: heartbeat 1.4s infinite;
+  transform-origin: center;
+  margin: 0 0.3em;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.25);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.18);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.plant {
+  position: absolute;
+  transform-origin: bottom center;
+  animation: wind 5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes wind {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(1deg);
+  }
+
+  45% {
+    transform: rotate(-2deg);
+  }
+
+  70% {
+    transform: rotate(1.5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.photo-container {
+  perspective: 1200px;
+}
+
+.photo-card {
+  width: 320px;
+  height: 420px;
+  position: relative;
+
+  transform-style: preserve-3d;
+
+  animation: swing3d 6s ease-in-out infinite;
+}
+
+@keyframes swing3d {
+  0% {
+    transform: rotateY(-25deg);
+  }
+
+  50% {
+    transform: rotateY(25deg);
+  }
+
+  100% {
+    transform: rotateY(-25deg);
+  }
+}
+
+.photo-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+@keyframes flipCard {
+  /* Front side swinging */
+  0%   { transform: rotateY(-15deg); }
+  20%  { transform: rotateY(15deg); }
+  40%  { transform: rotateY(-15deg); }
+
+  /* Flip */
+  50%  { transform: rotateY(180deg); }
+
+  /* Back side keeps swinging */
+  60%  { transform: rotateY(195deg); }
+  80%  { transform: rotateY(165deg); }
+  90%  { transform: rotateY(195deg); }
+
+  /* Flip back */
+  100% { transform: rotateY(360deg); }
+}
+
+.photo-card {
+  animation: flipCard 8s infinite ease-in-out;
+}
+
+.letter {
+  width: min(800px, 90vw);
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.15),
+      rgba(255,255,255,.5)
+    );
+
+  padding: 4rem;
+
+  border: 1px solid rgba(184,149,91,.3);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.2);
+
+  position: relative;
+}
+
+.letter::before,
+.letter::after {
+  content: "❦";
+
+  position: absolute;
+
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+.letter::before {
+  top: 15px;
+  left: 20px;
+}
+
+.letter::after {
+  bottom: 15px;
+  right: 20px;
+}
